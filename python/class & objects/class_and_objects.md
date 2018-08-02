@@ -45,10 +45,10 @@ class DeathNote:
       DeathNote.killCount += 1
 # defining method displayCount    
    def displayCount(self):
-     print "Total Deaths = %d" % Employee.empCount
+     print("Total Deaths = %d" % Employee.empCount)
 # defining method displayCount
    def displayCriminals(self):
-      print "Name : ", self.name,  ", Salary: ", self.salary
+      print("Name : ", self.name,  ", Salary: ", self.salary)
 
 ```
 
@@ -122,15 +122,15 @@ Every Python class keeps following built-in attributes and they can be accessed 
 > examples:
 
 ```Python
-print "DeathNote.__doc__:", DeathNote.__doc__
+print("DeathNote.__doc__:", DeathNote.__doc__)
 
-print "DeathNote.__name__:", DeathNote.__name__
+print("DeathNote.__name__:", DeathNote.__name__)
 
-print "DeathNote.__module__:", DeathNote.__module__
+print("DeathNote.__module__:", DeathNote.__module__)
 
-print "DeathNote.__bases__:", DeathNote.__bases__
+print("DeathNote.__bases__:", DeathNote.__bases__)
 
-print "DeathNote.__dict__:", DeathNote.__dict__
+print("DeathNote.__dict__:", DeathNote.__dict__)
 ```
 Output wil be :
 
@@ -153,12 +153,12 @@ class DeathNote:
       self.cause= cause
    def __del__(self):
       class_name = self.__DeathNote__.__name__
-      print class_name, "destroyed"
+      print(class_name, "destroyed")
 
 criminal_1 = DeathNote()
 criminal_2 = criminal_1
 criminal_3 = criminal_1
-print id(criminal_1), id(criminal_2), id(crimimnal_3) # prints the ids of the obejcts
+print(id(criminal_1), id(criminal_2), id(crimimnal_3)) # prints the ids of the obejcts
 del criminal_1
 del criminal_2
 del criminal_3
@@ -169,3 +169,121 @@ Output will be :
 
 
 # Class Inheritance
+
+ you can create a class by deriving it from a preexisting class by listing the parent class in parentheses after the new class name.
+
+ The child class inherits the attributes of its parent class, and you can use those attributes as if they were defined in the child class. A child class can also override data members and methods from the parent.
+
+ ### <u>Syntex</u> :
+```Python
+ class SubClassName (ParentClass1[, ParentClass2, ...]):
+   'Optional class documentation string'
+   class_suite
+```
+
+***Example*** :
+```Python
+class DeathNote:        # define parent class
+   DeathAttr = 100
+   def __init__(self):
+      print("Calling DeathNote constructor")
+
+   def DeathMethod(self):
+      print('Calling DeathNote method')
+
+   def setAttr(self, attr):
+      DeathNote.parentAttr = attr
+
+   def getAttr(self):
+      print("DeathNote attribute :", DeathNote.parentAttr)
+
+class KIRA(DeathNote): # define child class
+   def __init__(self):
+      print("Calling KIRA constructor")
+
+   def KIRAMethod(self):
+      print('Calling KIRA method')
+
+c=KIRA()          # instance of child
+c.KIRAMethod()      # child calls its method
+c.DeathMethod()     # calls parent's method
+c.setAttr(200)       # again call parent's method
+c.getAttr()          # again call parent's method
+```
+**Output will be** :
+
+![Inheritance](inheritence.PNG)
+
+> Here DeathNote is parent class and KIRA is child class.
+
+You can use issubclass() or isinstance() functions to check a relationships of two classes and instances.
++ *The issubclass(sub, sup) boolean function returns true if the given subclass sub is indeed a subclass of the superclass sup.*
++ *The isinstance(obj, Class) boolean function returns true if obj is an instance of class Class or is an instance of a subclass of Class.*
+
+# Overriding Methods
+
+You can always override your parent class methods. One reason for overriding parent's methods is because you may want special or different functionality in your subclass.
+
+**Example** :
+```Python
+class DeathNote:        # define parent class
+   def Criminals(self):
+      print('Calling parent method')
+
+class KIRA(DeathNote): # define child class
+   def Criminals(self):
+      print('Calling child method')
+
+c = KIRA()          # instance of child
+c.Criminals()         # child calls overridden method
+```
+**Output will be** :
+
+![Child Method](child.PNG)
+
+# Base Overloading Methods
+
+Following table lists some generic functionality that you can override in your own classes −
+
+1. **\__init__ ( self [,args...] )**
+
+     Constructor (with any optional arguments)  
+     Sample Call : obj = className(args)
+2. **\__del__( self )**  
+     Destructor, deletes an object  
+     Sample Call : del obj
+3. **\__repr__( self )**  
+    Evaluable string representation  
+    Sample Call : repr(obj)
+4. **\__str__( self )**  
+    Printable string representation  
+    Sample Call : str(obj)
+5. **\__cmp__ ( self, x )**  
+    Object comparison  
+    Sample Call : cmp(obj, x)
+
+# Overloading operators
+
+Suppose you have created a Vector class to represent two-dimensional vectors, what happens when you use the plus operator to add them? Most likely Python will yell at you.
+
+
+You could, however, define the \__add__ method in your class to perform vector addition and then the plus operator would behave as per expectation.
+
+Example :
+
+```python
+class Vector:
+   def __init__(self, a, b):
+      self.a = a
+      self.b = b
+
+   def __str__(self):
+      return 'Vector (%d, %d)' % (self.a, self.b)
+
+   def __add__(self,other):
+      return Vector(self.a + other.a, self.b + other.b)
+
+v1 = Vector(2,10)
+v2 = Vector(5,-2)
+print v1 + v2
+```
