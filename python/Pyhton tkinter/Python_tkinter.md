@@ -12,10 +12,10 @@
           is ‘tkinter’.  
 *There are two main methods used you the user need to remember while creating the Python application with GUI.*
 
-    1. **Tk(screenName=None,  baseName=None,  className=’Tk’,  useTk=1) :**
-    To create a main window, tkinter offers a method ‘Tk(screenName=None,  baseName=None,  className=’Tk’,  useTk=1)’. To change the name of the window, you can change the className to the desired one.
+1. **Tk(screenName=None,  baseName=None,  className=’Tk’,  useTk=1) :**
+To create a main window, tkinter offers a method ‘Tk(screenName=None,  baseName=None,  className=’Tk’,  useTk=1)’. To change the name of the window, you can change the className to the desired one.
 
-    2. **mainloop() :** There is a method known by the name mainloop() is used when you are ready for the application to run. mainloop() is an infinite loop used to run the application, wait for an event to occur and process the event till the window is not closed.
+2. **mainloop() :** There is a method known by the name mainloop() is used when you are ready for the application to run. mainloop() is an infinite loop used to run the application, wait for an event to occur and process the event till the window is not closed.
 
 *tkinter also offers access to the geometric configuration of the widgets which can organize the widgets in the parent windows. There are mainly three geometry manager classes class.*
 
