@@ -1,5 +1,5 @@
 import tkinter as tk
-m=tk.Tk() # where m is the name of the main window object
-w=tk.Button(m, text='Stop', width=25, command=m.destroy)
+n=tk.Tk() # where n is the name of the main window object
+w=tk.Button(m, text='Stop', width=25, command=n.destroy)
 w.pack()
-m.mainloop()
+n.mainloop()
