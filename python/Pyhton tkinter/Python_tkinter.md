@@ -50,3 +50,5 @@ w=tk.Button(m, text='Stop', width=25, command=m.destroy)
 w.pack()
 m.mainloop()
 ```
+
+2. **Canvas** : It is used to draw pictures and other complex layout like graphics, text and widgets.
